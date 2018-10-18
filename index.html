@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>抽奖</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+    <div style="margin:50px">
+        <p>设置奖项<br/>
+            <input id='prizes' value="1,3,7"><input type="button" id='btnSetPrize' value="设置奖项" /></p>
+        <input id='btnStart' type="button" value="开始抽奖" />
+        <input id='btnStop' type="button" value="停止抽奖" />
+    </div>
+
+
+    <div class="draw" id="lottery">
+        <table>
+            <tr>
+                <td class="item lottery-unit lottery-unit-0">
+                    <div class="img">
+                        
+                    </div>
+                    <span class="name">牛一头</span>
+                </td>
+                <td class="gap"></td>
+                <td class="item lottery-unit lottery-unit-1">
+                    <div class="img">
+                    </div>
+                    <span class="name">猪一个</span>
+                </td>
+                <td class="gap"></td>
+                <td class="item lottery-unit lottery-unit-2">
+                    <div class="img">
+                     
+                    </div>
+                    <span class="name">美女陪玩一天</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="gap-2" colspan="5"></td>
+            </tr>
+            <tr>
+                <td class="item lottery-unit lottery-unit-7">
+                    <div class="img">
+                        
+                    </div>
+                    <span class="name">恐龙馆</span>
+                </td>
+                <td class="gap"></td>
+                <td class=""><a class="draw-btn" id="draw-btn" href="javascript:">立即抽奖</a></td>
+                <td class="gap"></td>
+                <td class="item lottery-unit lottery-unit-3">
+                    <div class="img">
+                       
+                    </div>
+                    <span class="name">大逃杀</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="gap-2" colspan="5"></td>
+            </tr>
+            <tr>
+                <td class="item lottery-unit lottery-unit-6">
+                    <div class="img">
+                        
+                    </div>
+                    <span class="name">鸭子三只</span>
+                </td>
+                <td class="gap"></td>
+                <td class="item lottery-unit lottery-unit-5">
+                    <div class="img">
+                      
+                    </div>
+                    <span class="name">小黄三天</span>
+                </td>
+                <td class="gap"></td>
+                <td class="item lottery-unit lottery-unit-4">
+                    <div class="img">
+                        
+                    </div>
+                    <span class="name">QQ币10</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <script src="./js/jquery.min.js"></script>
+    <script src="./lottery.js"></script>
+    <script>
+        var btnStart = document.getElementById('btnStart')
+        var btnSetPrize = document.getElementById('btnSetPrize')
+        var btnDraw = document.getElementById('draw-btn')
+        var inputPrizes = document.getElementById('prizes')
+        var lotteryEl = $('#lottery')
+
+        var options = {
+        }
+
+        var lottery = new Lottery(options)
+        lottery.onStart = function (ins, index, cycle) {
+            lotteryEl.find('.lottery-unit').removeClass('active');
+            lotteryEl.find('.lottery-unit.lottery-unit-' + index).addClass('active');
+            console.log('start....', index, cycle)
+        }
+
+        lottery.onUpdate = function (ins, index, times) {
+            lotteryEl.find('.lottery-unit').removeClass('active');
+            lotteryEl.find('.lottery-unit.lottery-unit-' + index).addClass('active');
+            //console.log('onUpdate', index, times)
+        }
+
+        lottery.onEnded = function (ins, index, prizeIndexes) {
+            lotteryEl.find('.lottery-unit').removeClass('active');
+            lotteryEl.find('.lottery-unit.lottery-unit-' + index).addClass('active');
+            console.log('ended', index, prizeIndexes)
+        }
+
+        lottery.onError = function (ins, code, message) {
+            console.log('onError', code, message)
+        }
+
+        btnStart.addEventListener('click', function () {
+            lottery.start()
+        })
+
+        btnDraw.addEventListener('click', function () {
+            lottery.start()
+        })
+
+        btnStop.addEventListener('click', function () {
+            lottery.stop()
+        })
+
+        btnSetPrize.addEventListener('click', function () {
+            setPrize()
+        })
+
+        function setPrize() {
+            var val = inputPrizes.value
+            var values = val.split(',')
+            var prizes = values.filter(v => {
+                return Number.isInteger(+v) && Number.parseInt(v) <= 7
+            }).map(v => {
+                return Number.parseInt(v)
+            })
+            lottery.setPrize(prizes)
+        }
+
+    </script>
+</body>
+
+</html>

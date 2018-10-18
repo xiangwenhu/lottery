@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.draw {
+    width: 460px;
+    height: 470px;
+    margin: 0 auto;
+    padding: 40px;
+    background-image: url(images/bg.png);
+}
+
+.draw .item {
+    width: 150px;
+    height: 150px;
+    background-image: url(images/bg1.png);
+}
+
+.draw .item.active {
+    background-image: url(images/bg2.png);
+}
+
+.draw .img {
+    display: table-cell;
+    width: 150px;
+    height: 61px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.draw .img img {
+    vertical-align: top;
+}
+
+.draw .gap {
+    width: 5px;
+}
+
+.draw .gap-2 {
+    height: 5px;
+}
+
+.draw .name {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.draw .draw-btn {
+    display: block;
+    height: 150px;
+    line-height: 150px;
+    border-radius: 20px;
+    font-size: 25px;
+    font-weight: 700;
+    color: #f0ff00;
+    background-color: #fe4135;
+    text-decoration: none;
+}
+
+.draw .draw-btn:hover {
+    background-color: #fe8d85;
+}
