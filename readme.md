@@ -10,7 +10,7 @@
 [演示地址](https://xiangwenhu.github.io/lottery/index.html)   
 1. 点击立即抽奖
 2. 点击设置奖项
-    奖项用逗号分隔, 最大值为7
+    奖项用逗号分隔, 最大值为7, 这些位置应该对应的是同一奖项.
 
 
 ![效果](/images/cov.jpg)
