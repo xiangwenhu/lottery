@@ -6,6 +6,11 @@
 3. 减慢动画效果, 命中奖品
 
 
+### 演示
+[演示地址](https://xiangwenhu.github.io/lottery/index.html)   
+1. 点击立即抽奖
+2. 点击设置奖项
+    奖项用逗号分隔, 最大值为7
 
 
 ![效果](/images/cov.jpg)
