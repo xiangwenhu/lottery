@@ -129,9 +129,7 @@
                 cb && cb(next);
             })
         }
-        this.next(function () {
-            cb && cb(next);
-        })
+        next()
     }
 
     Lottery.prototype.next = function (cb) {
