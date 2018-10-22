@@ -112,7 +112,7 @@
     Lottery.prototype.getInterval = function () {
         const getIntervalFn = this.options;
         if ($.isFunction(getIntervalFn)) {
-            return getIntervalFn(this.index, this.times);
+            return getIntervalFn(this, this.index, this.times, this.cycle);
         } else {
             return Math.floor(this.options.interval * Math.pow(this.options.rate, this.times / 10));
         }
