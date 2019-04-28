@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+}
+
+.draw-container {
+    background: url(images/bg-draw.jpg) no-repeat;
+    background-size: 100vw 100vw;
+    height: 100vw;
+    width: 100vw;
+    position: relative;
+}
+
+.draw-prizes {
+    position: absolute;
+    top: 49%;
+    left: 53%;
+    transform: translate(-50%, -50%) rotate(22.5deg);
+    width: 80vw;
+    z-index: 10;
+}
+
+.draw-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-34%, -61%);
+    width: 20vw;
+    z-index: 20;
+}
+
+.animate {
+    animation-name: rotating;
+    animation-timing-function: linear;
+    animation-duration: 1200ms;
+    animation-iteration-count: infinite;
+}
+
+@keyframes rotating {
+    0% {
+        transform: translate(-50%, -50%) rotate(0);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
